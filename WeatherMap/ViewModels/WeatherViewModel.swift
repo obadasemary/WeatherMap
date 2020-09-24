@@ -52,7 +52,9 @@ class WeatherViewModel: ObservableObject {
             
             if let weather = weather {
                 
-                self.weather = weather
+                DispatchQueue.main.async {
+                    self.weather = weather
+                }
             }
         }
     }
