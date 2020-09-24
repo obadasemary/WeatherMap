@@ -14,7 +14,7 @@ struct ContentView: View {
     // MARK: - BODY
     
     var body: some View {
-        Text("Hello, world!, \(path + city + appIDPath + appId + unitsPath)")
+        Text("Hello, world!")
             .padding()
     }
 }
