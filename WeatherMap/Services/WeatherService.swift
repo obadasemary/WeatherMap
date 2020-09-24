@@ -14,12 +14,35 @@ class WeatherService {
     let appIDPath = "&appid="
     let unitsPath = "&units=metric"
     
-    func getWeather(city: String, completions: @escaping (Weather?) -> ()) {
+    func getWeather(city: String, completion: @escaping (Weather?) -> ()) {
         
         let fullPath = path + city + appIDPath + appId + unitsPath
         
-        guard let url = URL(string: <#T##String#>) else {
-            <#statements#>
+        guard let url = URL(string: fullPath) else {
+            
+            completion(nil)
+            return
         }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            
+            guard let data = data, error == nil else {
+                
+                completion(nil)
+                return
+            }
+            
+            let weatherResponse = try? JSONDecoder().decode(WeatherResponse.self, from: data)
+            
+            if let weatherResponse = weatherResponse {
+                
+                let weather = weatherResponse.main
+                completion(weather)
+            } else {
+                completion(nil)
+            }
+        }
+        .resume()
     }
 }
