@@ -30,11 +30,15 @@ struct ContentView: View {
             .foregroundColor(.white)
             .fixedSize()
             .padding()
+            .offset(y: 100)
             
-            Text(self.weatherVM.temperature)
-                .foregroundColor(.orange)
-                .offset(y: -100)
+            Text("\(self.weatherVM.temperature) °C")
+                .foregroundColor(.white)
+                .offset(y: 100)
+                .font(.largeTitle)
                 .padding()
+            
+            Spacer()
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         .background(Color.pink)
