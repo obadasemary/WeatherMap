@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    // MARK: - PROPERTIES
+    
+    // MARK: - BODY
+    
     var body: some View {
-        Text("Hello, world!")
+        Text("Hello, world!, \(path + city + appIDPath + appId + unitsPath)")
             .padding()
     }
 }
